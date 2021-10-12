@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>letters from space</title>
+	<style type="text/css">
+    *{margin: 0; padding: 0;border: 0;
+                     outline: 0; dlsplay:block; vertical-align: center;
+                     }
+
+
+   #loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 9;
+  width: 120px;
+  height: 120px;
+  margin: -76px 0 0 -76px;
+  border: 8px gray;
+  border-radius: 50%;
+  border-top: 8px solid #fff;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv { height: 50px; left: 20px; margin-top: 200px;  position:  relative; 
+	     font-size: 1.5rem; color: white;
+          display: flex;
+          text-align: center;
+}
+
+	body
+	{
+		width: 100%;
+        background-image: url('giphy.gif');
+        background-repeat : infinite;
+        background-size : cover;
+        overflow-x: hidden;
+     }
+    
+
+
+.myButton {
+  background-color:#ffffff;
+  display:inline-block;
+  cursor:pointer;
+  color:#000000;
+  font-family:Arial;
+  font-size:17px;
+  padding:16px 31px;
+  text-decoration:none;
+  text-shadow:0px 0px 0px #283966;
+}
+.myButton:hover {
+  background-color:#808080;
+}
+.myButton:active {
+  position:relative;
+  top:1px;
+}
+
+        
+
+
+        .container{
+        	       position: relative; margin-top: 200px; margin-left: 430px;
+        	       margin-bottom: 100px;
+        	       width: 600px;  background-color: black; 
+        	       background-attachment: fixed;
+        	       opacity: 0.5; 
+        	     }
+
+           .container:hover {
+         	background-image: url(2001.jpeg);
+            position: relative;
+            width: 600px; height: 100%;
+            
+            background-repeat: infinite;
+            cursor: pointer;
+            }
+         
+
+         #poetText{font-family: 'Times New Roman', Times, Arial, Helvetica, sans-serif; z-index: 9; position: relative; 
+		 text-align: center; 
+			font-size: 2.3rem; color: white; border-bottom: 100px;}
+			.word{opacity:0; animation: fadeinText 3s forwards;}
+			@keyframes fadeinText{
+				100%{opacity: 1;}
+			}
+  p {font-family: Arial; arial narrow; sans-serif; z-index: 9; position: relative;
+    font-size: 1.3rem;}
+	</style>
+</head>
+<body onload="myFunction()" style="margin:0;">
+
+<div id="loader"></div>
+
+<div style="display:none;" id="myDiv" class="animate-bottom">
+	<h2>Unknown</h2><br>
+	<P>Accept message request from '???' ?</P><br><br><br>
+	<button id="oneBut"><a href="#" class="myButton" style="display: block;">Accept</a></button>
+    <audio id=sndOne><source src="spacesong.mp3"></audio></div><br><br>
+	<div class="container">
+	<div id="poetText"><br><p>typing...</p></div>
+</div>
+
+
+<script type="text/javascript">
+	var myVar;
+
+function myFunction() {
+  myVar = setTimeout(showPage, 1000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+var state = false; 
+         
+
+
+         oneBut.onclick = function() {
+                if(!state){
+                    sndOne.play();
+                    state =true; 
+                }else{
+                    sndOne.pause();
+                    state=false;
+                }
+                 }
+
+
+
+	var poet = " <br> <br> <br> <br> <br> It was late at night<br> You held on tight<br> <br> <br> From an empty seat<br> A flash of light<br> <br> <br> It will take a while<br> To make you smile<br> Somewhere in these eyes<br> I'm on your side<br> <br> <br> You wide-eyed girls<br> <br> You get it right<br> <br> <br> <br> <br> <br> Fall back into place<br> <br>  <br> <br> <br>  Fall back into place<br>  <br> <br> <br> <br>... <br> ...<br> ...<br> <br> <br> <br> <br> <br>... <br> ...<br> ...<br> <br> <br> <br> <br>... <br> ...<br> ...<br> <br> <br> <br> <br>  Tender is the night<br> For a broken heart<br> <br> <br> <br> <br> Who will dry your eyes<br> When it falls apart?<br> <br> <br> <br> What makes this fragile world go 'round?<br> Were you ever lost?<br> Was she ever found?<br> <br> <br> Somewhere in these eyes.<br> <br> <br> <br> <br> <br> <br> <br> <br> Fall back into place <br> <br> <br>  <br> <br> Fall back into<br> <br> <br> <br> <br> <br>  ";
+var poetArr = poet.split(" ");
+
+var myTimer = setInterval(print,1100);
+var s=0;
+function print(){
+	var t = document.createElement("span");
+	t.innerHTML = poetArr[s] + " ";
+	t.className= "word";
+	s++;
+	poetText.appendChild(t);
+	//배열 f(s== poetArr.length)
+	if(s== poetArr.length){
+		clearInterval(myTimer);
+	}
+}
+ 
+   function randomBH(min, max) {
+   min = Math.ceil(min);
+   max = Math.floor(max);
+   return Math.floor(Math.random() * (max - min + 1)) + min;
+   }
+
+   function hideDiv (){
+  document.getElementById("myDiv").style.display="none";
+}
+self.setTimeout("hideDiv()",6300);
+</script>
+
+
+</body>
+</html>
